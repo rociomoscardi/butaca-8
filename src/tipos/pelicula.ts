@@ -3,7 +3,7 @@
 export interface Pelicula {
   id: number // id de la película en TMDB
   titulo: string
-  anio: number
+  anio: number | null // null si TMDB no tiene fecha de estreno
   sinopsis: string
   elenco: string[] // solo nombres de actores
   generoIds: number[] // ids de género tal cual los da TMDB, ej. [18, 27]
