@@ -1,13 +1,11 @@
-// Punto de entrada de la app: carga los estilos y arma la página.
+// Punto de entrada del sitio público: muestra la semana actual.
 import './estilos/main.css'
+import { crearDatosSemana } from './componentes/encabezado-semana'
+import { crearTarjetaPelicula } from './componentes/tarjeta-pelicula'
+import { semanaActual } from './semana-actual'
 
-const app = document.querySelector<HTMLDivElement>('#app')!
+const datosSemana = document.querySelector<HTMLDivElement>('#datos-semana')!
+const grilla = document.querySelector<HTMLUListElement>('#grilla')!
 
-app.innerHTML = `
-  <header>
-    <h1>Butaca 8</h1>
-  </header>
-  <main>
-    <p>El proyecto levanta correctamente.</p>
-  </main>
-`
+datosSemana.replaceChildren(...crearDatosSemana(semanaActual))
+grilla.replaceChildren(...semanaActual.peliculas.map(crearTarjetaPelicula))

@@ -25,3 +25,104 @@ img {
   max-width: 100%;
   display: block;
 }
+
+/* ---------- Home: encabezado de la semana ---------- */
+
+.encabezado-semana {
+  padding-top: 2rem;
+}
+
+.encabezado-semana h1 {
+  margin: 0;
+  font-size: 2rem;
+  letter-spacing: -0.02em;
+}
+
+.rango-fechas,
+.tema {
+  margin: 0.25rem 0 0;
+  color: #555;
+}
+
+.tema {
+  font-style: italic;
+}
+
+/* Oculto a la vista pero lo leen los lectores de pantalla */
+.visualmente-oculto {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ---------- Home: grilla de películas ---------- */
+
+.grilla {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem 1rem;
+}
+
+@media (min-width: 768px) {
+  .grilla {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem 1.5rem;
+  }
+}
+
+.tarjeta {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.poster {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.15);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.poster-vacio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: #ccc;
+  color: #444;
+  text-align: center;
+  font-weight: 600;
+}
+
+.tarjeta:hover .poster,
+.tarjeta:focus-visible .poster {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgb(0 0 0 / 0.2);
+}
+
+.tarjeta:focus-visible {
+  outline: 2px solid #1a1a1a;
+  outline-offset: 4px;
+  border-radius: 6px;
+}
+
+.titulo {
+  display: block;
+  margin-top: 0.5rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
