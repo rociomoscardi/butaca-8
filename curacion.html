@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Butaca 8 — Curación</title>
+  </head>
+  <body>
+    <header>
+      <h1>Curación semanal</h1>
+    </header>
+
+    <main>
+      <section class="datos-semana">
+        <label>
+          Fecha de inicio
+          <input type="date" id="fecha-inicio" />
+        </label>
+        <label>
+          Tema (opcional)
+          <input type="text" id="tema" placeholder="Ej. Terror de los 80" />
+        </label>
+      </section>
+
+      <div class="columnas">
+        <section id="busqueda">
+          <h2>Buscar</h2>
+        </section>
+
+        <section>
+          <h2>Vista previa</h2>
+          <div id="zona-vista-previa">
+            <p>Elegí una película de los resultados.</p>
+          </div>
+        </section>
+      </div>
+
+      <section>
+        <h2>Elegidas (<span id="contador">0</span>/8)</h2>
+        <div id="zona-elegidas"></div>
+        <button type="button" id="exportar" hidden>Exportar semana</button>
+      </section>
+    </main>
+
+    <script type="module" src="/src/main-curacion.ts"></script>
+  </body>
+</html>

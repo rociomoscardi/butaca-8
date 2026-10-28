@@ -27,7 +27,15 @@ src/
   datos/                Datos de prueba (mock) para trabajar sin depender de la API.
   estilos/              Archivos CSS.
 .env.example            Plantilla para el token de TMDB (copiar como .env.local).
+curacion.html           Herramienta local para armar la semana (no va al build).
+src/main-curacion.ts    Punto de entrada de la curación.
+src/curacion/           Piezas de la pantalla de curación (buscador, vista previa, etc.).
 ```
+
+## Curación semanal
+
+Con `npm run dev`, entrá a `localhost:5173/curacion.html`. Armá la semana y
+tocá "Exportar semana": se descarga `semana-actual.ts`, que va en `src/`.
 
 ## Sobre el token de TMDB
 
