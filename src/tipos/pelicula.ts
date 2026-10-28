@@ -5,7 +5,13 @@ export interface Pelicula {
   titulo: string
   anio: number
   sinopsis: string
-  elenco: string[]
-  generos: string[]
-  poster: string | null // URL del póster, o null si no tiene
+  elenco: string[] // solo nombres de actores
+  generoIds: number[] // ids de género tal cual los da TMDB, ej. [18, 27]
+  posterPath: string | null // path parcial de TMDB, ej. "/abc123.jpg"
+}
+
+// Un género de TMDB (ej. { id: 18, nombre: 'Drama' }).
+export interface Genero {
+  id: number
+  nombre: string
 }
