@@ -14,6 +14,10 @@ export interface ResultadoBusqueda {
   posterPath: string | null
 }
 
+// Detalle tal cual sale de TMDB: igual a Pelicula, pero con ids de género
+// en vez de nombres. La curación los traduce a nombres antes de guardarla.
+export type DetalleTmdb = Omit<Pelicula, 'generos'> & { generoIds: number[] }
+
 // Hace un GET a TMDB y devuelve el JSON. Si algo falla, tira un error en español.
 async function pedirATmdb(ruta: string, parametros: Record<string, string> = {}): Promise<any> {
   // language=es-AR en todas las llamadas para que los datos vengan en español
@@ -52,7 +56,7 @@ export async function buscarPeliculas(query: string): Promise<ResultadoBusqueda[
   }))
 }
 
-export async function obtenerDetallePelicula(id: number): Promise<Pelicula> {
+export async function obtenerDetallePelicula(id: number): Promise<DetalleTmdb> {
   const datos = await pedirATmdb(`/movie/${id}`, { append_to_response: 'credits' })
 
   return {

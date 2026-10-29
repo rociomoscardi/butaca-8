@@ -6,7 +6,7 @@ export interface Pelicula {
   anio: number | null // null si TMDB no tiene fecha de estreno
   sinopsis: string
   elenco: string[] // solo nombres de actores
-  generoIds: number[] // ids de género tal cual los da TMDB, ej. [18, 27]
+  generos: string[] // nombres de género ya resueltos en la curación, ej. ["Drama", "Terror"]
   posterPath: string | null // path parcial de TMDB, ej. "/abc123.jpg"
 }
 

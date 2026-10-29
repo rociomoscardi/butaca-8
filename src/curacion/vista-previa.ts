@@ -43,6 +43,7 @@ export function crearVistaPrevia(pelicula: Pelicula, alAgregar: (pelicula: Pelic
     crearCampo('Sinopsis', textareaSinopsis),
     crearParrafo(`Año: ${pelicula.anio ?? 'sin fecha'}`),
     crearParrafo(`Elenco: ${pelicula.elenco.join(', ') || 'sin datos'}`),
+    crearParrafo(`Géneros: ${pelicula.generos.join(', ') || 'sin datos'}`),
     boton,
   )
   return contenedor

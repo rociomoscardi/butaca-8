@@ -8,7 +8,7 @@ export const peliculasMock: Pelicula[] = [
     anio: 1999,
     sinopsis: 'Un empleado de oficina insomne y un fabricante de jabón forman un club de pelea clandestino.',
     elenco: ['Edward Norton', 'Brad Pitt', 'Helena Bonham Carter'],
-    generoIds: [18],
+    generos: ['Drama'],
     posterPath: null,
   },
   {
@@ -17,7 +17,7 @@ export const peliculasMock: Pelicula[] = [
     anio: 1972,
     sinopsis: 'El patriarca de una familia de la mafia neoyorquina le cede el control de su imperio a su hijo menor.',
     elenco: ['Marlon Brando', 'Al Pacino', 'James Caan'],
-    generoIds: [18, 80],
+    generos: ['Drama', 'Crimen'],
     posterPath: null,
   },
 ]

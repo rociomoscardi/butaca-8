@@ -15,10 +15,10 @@ export const semanaActual: SemanaCartelera = {
         "William Zabka",
         "Martin Kove"
       ],
-      "generoIds": [
-        28,
-        18,
-        10751
+      "generos": [
+        "Acción",
+        "Drama",
+        "Familia"
       ],
       "posterPath": "/qupC1Jxss4YH5Y2ZeIB4XXokGcd.jpg"
     },
@@ -34,9 +34,9 @@ export const semanaActual: SemanaCartelera = {
         "William Sadler",
         "Clancy Brown"
       ],
-      "generoIds": [
-        18,
-        80
+      "generos": [
+        "Drama",
+        "Crimen"
       ],
       "posterPath": "/uRRTV7p6l2ivtODWJVVAMRrwTn2.jpg"
     },
@@ -52,10 +52,10 @@ export const semanaActual: SemanaCartelera = {
         "Peter Coyote",
         "Dee Wallace"
       ],
-      "generoIds": [
-        12,
-        878,
-        10751
+      "generos": [
+        "Aventura",
+        "Ciencia ficción",
+        "Familia"
       ],
       "posterPath": "/ojvKem8WUzRK5PLvO7wTuAFinnz.jpg"
     },
@@ -71,9 +71,9 @@ export const semanaActual: SemanaCartelera = {
         "Michael Sheen",
         "Jemaine Clement"
       ],
-      "generoIds": [
-        35,
-        18
+      "generos": [
+        "Comedia",
+        "Drama"
       ],
       "posterPath": "/iPC1Hdj8kaNYd7b8mbYKeKRpIuj.jpg"
     },
@@ -89,10 +89,10 @@ export const semanaActual: SemanaCartelera = {
         "Sakina Jaffrey",
         "Damon Daunno"
       ],
-      "generoIds": [
-        18,
-        35,
-        10749
+      "generos": [
+        "Drama",
+        "Comedia",
+        "Romance"
       ],
       "posterPath": "/bLZhgPtOLHr2dmr2mHS0DbHYvv2.jpg"
     },
@@ -108,9 +108,9 @@ export const semanaActual: SemanaCartelera = {
         "Jenna Fischer",
         "Mckenna Grace"
       ],
-      "generoIds": [
-        35,
-        10402
+      "generos": [
+        "Comedia",
+        "Música"
       ],
       "posterPath": "/9DShRzKYULy6ENCNaAozPpogIF1.jpg"
     },
@@ -126,10 +126,10 @@ export const semanaActual: SemanaCartelera = {
         "Paul Winfield",
         "Lance Henriksen"
       ],
-      "generoIds": [
-        28,
-        53,
-        878
+      "generos": [
+        "Acción",
+        "Suspense",
+        "Ciencia ficción"
       ],
       "posterPath": "/9KI49SBnwAOzGcMw1onIki7vd2.jpg"
     },
@@ -145,10 +145,10 @@ export const semanaActual: SemanaCartelera = {
         "Chloë Grace Moretz",
         "Matthew Gray Gubler"
       ],
-      "generoIds": [
-        35,
-        18,
-        10749
+      "generos": [
+        "Comedia",
+        "Drama",
+        "Romance"
       ],
       "posterPath": "/xziurNdvxWZkgonZ5ZaGRB9YdLt.jpg"
     }
