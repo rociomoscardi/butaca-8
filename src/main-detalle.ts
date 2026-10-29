@@ -79,7 +79,19 @@ function crearAcciones(): HTMLDivElement {
     estrellas.append(estrella)
   }
 
-  acciones.append(crearBoton('Marcar como vista', 'accion'), estrellas, crearBoton('Agregar opinión', 'accion'))
+  // Formulario de opinión, siempre visible debajo de las acciones.
+  // "Guardar" todavía no hace nada (no hay dónde persistir la opinión).
+  const formOpinion = document.createElement('div')
+  formOpinion.className = 'form-opinion'
+
+  const textareaOpinion = document.createElement('textarea')
+  textareaOpinion.rows = 4
+  textareaOpinion.placeholder = '¿Qué te pareció esta película?'
+  textareaOpinion.setAttribute('aria-label', 'Tu opinión')
+
+  formOpinion.append(textareaOpinion, crearBoton('Guardar', 'accion'))
+
+  acciones.append(crearBoton('Marcar como vista', 'accion'), estrellas, formOpinion)
   return acciones
 }
 
