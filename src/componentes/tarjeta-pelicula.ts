@@ -1,14 +1,14 @@
 // Tarjeta de la grilla: póster (o placeholder gris) y título.
-// Es un botón para que ya quede clickeable; el detalle se conecta más adelante.
+// Es un link al detalle de la película (detalle.html?id=123).
 import { urlPoster } from '../api/tmdb-helpers'
 import type { Pelicula } from '../tipos/pelicula'
 
 export function crearTarjetaPelicula(pelicula: Pelicula): HTMLLIElement {
   const item = document.createElement('li')
 
-  const boton = document.createElement('button')
-  boton.type = 'button'
-  boton.className = 'tarjeta'
+  const link = document.createElement('a')
+  link.href = `detalle.html?id=${pelicula.id}`
+  link.className = 'tarjeta'
 
   const url = urlPoster(pelicula.posterPath, 'w500')
   if (url) {
@@ -17,19 +17,19 @@ export function crearTarjetaPelicula(pelicula: Pelicula): HTMLLIElement {
     img.src = url
     img.alt = '' // el título ya está escrito debajo
     img.loading = 'lazy'
-    boton.append(img)
+    link.append(img)
   } else {
     const vacio = document.createElement('span')
     vacio.className = 'poster poster-vacio'
     vacio.textContent = pelicula.titulo
-    boton.append(vacio)
+    link.append(vacio)
   }
 
   const titulo = document.createElement('span')
   titulo.className = 'titulo'
   titulo.textContent = pelicula.titulo
-  boton.append(titulo)
+  link.append(titulo)
 
-  item.append(boton)
+  item.append(link)
   return item
 }

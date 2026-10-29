@@ -5,7 +5,10 @@ export default defineConfig({
     rolldownOptions: {
       // Solo el sitio público. curacion.html es una herramienta local:
       // se usa con `npm run dev` (localhost:5173/curacion.html) y no va a dist/.
-      input: 'index.html',
+      input: {
+        main: 'index.html',
+        detalle: 'detalle.html',
+      },
     },
   },
 })
