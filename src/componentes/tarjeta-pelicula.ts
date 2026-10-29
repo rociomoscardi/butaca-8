@@ -1,6 +1,7 @@
 // Tarjeta de la grilla: póster (o placeholder gris) y título.
 // Es un link al detalle de la película (detalle.html?id=123).
 import { urlPoster } from '../api/tmdb-helpers'
+import { crearMarcoPoster } from './marco-poster'
 import type { Pelicula } from '../tipos/pelicula'
 
 export function crearTarjetaPelicula(pelicula: Pelicula): HTMLLIElement {
@@ -17,12 +18,12 @@ export function crearTarjetaPelicula(pelicula: Pelicula): HTMLLIElement {
     img.src = url
     img.alt = '' // el título ya está escrito debajo
     img.loading = 'lazy'
-    link.append(img)
+    link.append(crearMarcoPoster(img))
   } else {
     const vacio = document.createElement('span')
     vacio.className = 'poster poster-vacio'
     vacio.textContent = pelicula.titulo
-    link.append(vacio)
+    link.append(crearMarcoPoster(vacio))
   }
 
   const titulo = document.createElement('span')

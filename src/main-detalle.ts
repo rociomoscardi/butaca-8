@@ -2,6 +2,7 @@
 // Todo sale de la semana actual: no se llama a TMDB.
 import './estilos/main.css'
 import { urlPoster } from './api/tmdb-helpers'
+import { crearMarcoPoster } from './componentes/marco-poster'
 import { semanaActual } from './semana-actual'
 import type { Pelicula } from './tipos/pelicula'
 
@@ -33,12 +34,12 @@ function crearDetalle(pelicula: Pelicula): HTMLElement {
     img.className = 'poster'
     img.src = url
     img.alt = `Póster de ${pelicula.titulo}`
-    articulo.append(img)
+    articulo.append(crearMarcoPoster(img))
   } else {
     const vacio = document.createElement('span')
     vacio.className = 'poster poster-vacio'
     vacio.textContent = pelicula.titulo
-    articulo.append(vacio)
+    articulo.append(crearMarcoPoster(vacio))
   }
 
   const info = document.createElement('div')

@@ -1,5 +1,15 @@
 /* Estilos globales: reset mínimo y tipografía base. */
 
+:root {
+  --azul-fondo: #0a0e1f;
+  --rojo-terciopelo: #4a1118;
+  --dorado: #d4a63a;
+  --crema: #f4ecdc;
+  --texto-secundario: #b9ad9a;
+  --borde-sutil: #1c2440;
+  --color-titulo-header: var(--dorado);
+}
+
 *,
 *::before,
 *::after {
@@ -14,6 +24,14 @@ body {
   background: #fafafa;
 }
 
+/* Sitio público (index y detalle). La curación también carga este archivo,
+   por eso la paleta se aplica con esta clase y no directo sobre body. */
+.sitio {
+  font-family: 'Work Sans', system-ui, sans-serif;
+  color: var(--crema);
+  background: var(--azul-fondo);
+}
+
 header,
 main {
   max-width: 1100px;
@@ -26,28 +44,6 @@ img {
   display: block;
 }
 
-/* ---------- Home: encabezado de la semana ---------- */
-
-.encabezado-semana {
-  padding-top: 2rem;
-}
-
-.encabezado-semana h1 {
-  margin: 0;
-  font-size: 2rem;
-  letter-spacing: -0.02em;
-}
-
-.rango-fechas,
-.tema {
-  margin: 0.25rem 0 0;
-  color: #555;
-}
-
-.tema {
-  font-style: italic;
-}
-
 /* Oculto a la vista pero lo leen los lectores de pantalla */
 .visualmente-oculto {
   position: absolute;
@@ -58,11 +54,113 @@ img {
   white-space: nowrap;
 }
 
+/* ---------- Home: header ---------- */
+
+.header-butaca {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: none;
+  height: 200px;
+  padding: 0 1rem;
+  background-color: var(--azul-fondo); /* mientras carga la imagen */
+  background-image: url('/texturas/alfombra.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.header-butaca h1 {
+  margin: 0;
+  font-family: 'Fascinate', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: clamp(48px, 14vw, 76px); /* 76px salvo en celulares angostos */
+  letter-spacing: 3px;
+  line-height: 1;
+  text-align: center;
+  /*color: var(--color-titulo-header);*/
+  color: var(--crema);
+}
+
+/* Rango de fechas y tema: hoy no se muestran (ver encabezado-semana.ts) */
+.rango-fechas,
+.tema {
+  margin: 0.25rem 0 0;
+  color: var(--texto-secundario);
+}
+
+.tema {
+  font-style: italic;
+}
+
+/* ---------- Franja de luces (reusable) ---------- */
+
+/* Cada punto es un radial-gradient en una baldosa de 28px que se repite en x. */
+.franja-luces {
+  height: 44px;
+  background-color: #10152c;
+  background-image: radial-gradient(circle at 10px 50%, var(--dorado) 0 3px, transparent 4px);
+  background-size: 28px 100%;
+  background-repeat: repeat-x;
+}
+
+/* ---------- Marco de póster (reusable) ---------- */
+
+.marco-poster {
+  position: relative;
+  padding: 16px;
+  border-radius: 6px;
+  background: var(--rojo-terciopelo);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.3);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Tiras de luces: arrancan a 4px del borde, sin hueco en las esquinas.
+   Un punto por baldosa de 16px, repetida a lo largo de la tira. */
+.luces-h,
+.luces-v {
+  position: absolute;
+}
+
+.luces-h {
+  left: 4px;
+  right: 4px;
+  height: 6px;
+  background-image: radial-gradient(circle at 4px 3px, var(--dorado) 0 2.5px, transparent 3px);
+  background-size: 16px 6px;
+  background-repeat: repeat-x;
+}
+
+.luces-v {
+  top: 4px;
+  bottom: 4px;
+  width: 6px;
+  background-image: radial-gradient(circle at 3px 4px, var(--dorado) 0 2.5px, transparent 3px);
+  background-size: 6px 16px;
+  background-repeat: repeat-y;
+}
+
+.luces-h.arriba {
+  top: 4px;
+}
+
+.luces-h.abajo {
+  bottom: 4px;
+}
+
+.luces-v.izquierda {
+  left: 4px;
+}
+
+.luces-v.derecha {
+  right: 4px;
+}
+
 /* ---------- Home: grilla de películas ---------- */
 
 .grilla {
   list-style: none;
-  margin: 0;
+  margin: 1rem 0 0;
   padding: 0;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -93,9 +191,7 @@ img {
   width: 100%;
   aspect-ratio: 2 / 3;
   object-fit: cover;
-  border-radius: 6px;
-  box-shadow: 0 1px 3px rgb(0 0 0 / 0.15);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  border-radius: 2px;
 }
 
 .poster-vacio {
@@ -109,23 +205,31 @@ img {
   font-weight: 600;
 }
 
-.tarjeta:hover .poster,
-.tarjeta:focus-visible .poster {
+.tarjeta:hover .marco-poster,
+.tarjeta:focus-visible .marco-poster {
   transform: translateY(-3px);
-  box-shadow: 0 6px 16px rgb(0 0 0 / 0.2);
+  box-shadow: 0 6px 16px rgb(0 0 0 / 0.5);
 }
 
 .tarjeta:focus-visible {
-  outline: 2px solid #1a1a1a;
+  outline: 2px solid var(--crema);
   outline-offset: 4px;
   border-radius: 6px;
 }
 
+/* Títulos de película (grilla y detalle) */
+.titulo,
+.detalle-info h1 {
+  font-family: 'Oswald', system-ui, sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
 .titulo {
   display: block;
-  margin-top: 0.5rem;
-  font-weight: 600;
+  margin-top: 0.75rem;
   line-height: 1.3;
+  letter-spacing: 0.02em;
 }
 
 /* ---------- Detalle de película ---------- */
@@ -134,13 +238,13 @@ img {
 .no-encontrada a {
   display: inline-block;
   margin: 1rem 0;
-  color: #555;
+  color: var(--texto-secundario);
   text-decoration: none;
 }
 
 .volver:hover,
 .no-encontrada a:hover {
-  color: #1a1a1a;
+  color: var(--crema);
   text-decoration: underline;
 }
 
@@ -161,24 +265,25 @@ img {
   }
 }
 
-.detalle .poster {
+.detalle .marco-poster {
   max-width: 320px;
 }
 
 .detalle-info h1 {
   margin: 0 0 0.75rem;
-  font-size: 2rem;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
+  font-size: 2.25rem;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
 }
 
 .dato {
   margin: 0.25rem 0;
-  color: #555;
+  color: var(--texto-secundario);
 }
 
 .dato strong {
-  color: #1a1a1a;
+  font-weight: 600;
+  color: var(--crema);
 }
 
 .sinopsis {
@@ -189,28 +294,29 @@ img {
 
 .acciones {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.75rem 1rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
   margin-top: 2rem;
   padding-top: 1.5rem;
-  border-top: 1px solid #e0e0e0;
+  border-top: 1px solid var(--borde-sutil);
 }
 
 .accion {
   padding: 0.5rem 1rem;
-  border: 1px solid #1a1a1a;
+  border: 1px solid var(--crema);
   border-radius: 6px;
-  background: #fff;
+  background: transparent;
   font: inherit;
+  font-weight: 500;
   color: inherit;
   cursor: pointer;
   transition: background 0.15s ease, color 0.15s ease;
 }
 
 .accion:hover {
-  background: #1a1a1a;
-  color: #fafafa;
+  background: var(--crema);
+  color: var(--azul-fondo);
 }
 
 .estrellas {
@@ -218,23 +324,22 @@ img {
 }
 
 .estrella {
-  padding: 0 0.15rem;
+  padding: 0;
   border: none;
   background: none;
   font-size: 1.5rem;
   line-height: 1;
-  color: #999;
+  color: var(--dorado);
   cursor: pointer;
-  transition: color 0.15s ease, transform 0.15s ease;
+  transition: transform 0.15s ease;
 }
 
 .estrella:hover {
-  color: #e0a800;
   transform: scale(1.15);
 }
 
 .form-opinion {
-  flex-basis: 100%;
+  align-self: stretch;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -244,17 +349,21 @@ img {
 .form-opinion textarea {
   width: 100%;
   padding: 0.75rem;
-  border: 1px solid #1a1a1a;
+  border: 1px solid var(--texto-secundario);
   border-radius: 6px;
-  background: #fff;
+  background: var(--borde-sutil);
   font: inherit;
   color: inherit;
   resize: vertical;
 }
 
+.form-opinion textarea::placeholder {
+  color: var(--texto-secundario);
+}
+
 .accion:focus-visible,
 .estrella:focus-visible,
 .form-opinion textarea:focus-visible {
-  outline: 2px solid #1a1a1a;
+  outline: 2px solid var(--crema);
   outline-offset: 2px;
 }
