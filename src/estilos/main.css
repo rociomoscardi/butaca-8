@@ -82,6 +82,54 @@ img {
   color: var(--crema);
 }
 
+/* ---------- Home: intro y letrero ---------- */
+
+.intro {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  font-family: 'Work Sans', system-ui, sans-serif;
+  font-size: 15px;
+  color: var(--texto-secundario);
+  text-align: center;
+}
+
+/* Letrero: título dorado entre dos filas de puntos */
+.letrero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 1rem;
+}
+
+.letrero h2 {
+  margin: 0;
+  font-family: 'Bowlby One', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--dorado);
+}
+
+/* ---------- Fila de puntos (reusable) ---------- */
+
+/* 7 puntos de 7px con 12px de separación (121px de ancho).
+   La baldosa de 38px tiene un punto opaco y uno al 40%, y se repite en x. */
+.fila-puntos {
+  display: block;
+  width: 121px;
+  height: 7px;
+  background-image:
+    radial-gradient(circle at 3.5px 3.5px, var(--dorado) 0 3px, transparent 3.5px),
+    radial-gradient(circle at 22.5px 3.5px, rgb(212 166 58 / 0.4) 0 3px, transparent 3.5px);
+  background-size: 38px 7px;
+  background-repeat: repeat-x;
+}
+
 /* Rango de fechas y tema: hoy no se muestran (ver encabezado-semana.ts) */
 .rango-fechas,
 .tema {
@@ -217,19 +265,14 @@ img {
   border-radius: 6px;
 }
 
-/* Títulos de película (grilla y detalle) */
-.titulo,
-.detalle-info h1 {
-  font-family: 'Oswald', system-ui, sans-serif;
-  font-weight: 600;
-  text-transform: uppercase;
-}
-
+/* Título de película en la grilla */
 .titulo {
   display: block;
   margin-top: 0.75rem;
+  font-family: 'Work Sans', system-ui, sans-serif;
+  font-weight: 400;
   line-height: 1.3;
-  letter-spacing: 0.02em;
+  text-align: center;
 }
 
 /* ---------- Detalle de película ---------- */
@@ -271,6 +314,9 @@ img {
 
 .detalle-info h1 {
   margin: 0 0 0.75rem;
+  font-family: 'Oswald', system-ui, sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
   font-size: 2.25rem;
   line-height: 1.15;
   letter-spacing: 0.01em;
